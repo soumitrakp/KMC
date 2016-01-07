@@ -8,10 +8,10 @@ KMC_TOOLS_DIR = kmc_tools
 
 CC 	= g++
 CFLAGS	= -Wall -O3 -m64 -static -fopenmp -Wl,--whole-archive -lpthread -Wl,--no-whole-archive -std=c++11 
-CLINK	= -lm -static -fopenmp -O3 -Wl,--whole-archive -lpthread -Wl,--no-whole-archive -std=c++11 
+CLINK	= -lm -fopenmp -O3 -Wl,--whole-archive -lpthread -Wl,--no-whole-archive -std=c++11 
 
-KMC_TOOLS_CFLAGS	= -Wall -O3 -m64 -static -Wl,--whole-archive -lpthread -Wl,--no-whole-archive -std=c++14
-KMC_TOOLS_CLINK	= -lm -static -O3 -Wl,--whole-archive -lpthread -Wl,--no-whole-archive -std=c++14
+KMC_TOOLS_CFLAGS	= -Wall -O3 -m64 -static -Wl,--whole-archive -lpthread -Wl,--no-whole-archive -std=c++11
+KMC_TOOLS_CLINK	= -lm -static -O3 -Wl,--whole-archive -lpthread -Wl,--no-whole-archive -std=c++11
 
 DISABLE_ASMLIB = false
 
@@ -28,6 +28,7 @@ $(KMC_MAIN_DIR)/radix.o \
 $(KMC_MAIN_DIR)/kb_completer.o \
 $(KMC_MAIN_DIR)/kb_storer.o \
 $(KMC_MAIN_DIR)/kmer.o \
+$(KMC_MAIN_DIR)/develop.o \
 $(KMC_MAIN_DIR)/prob_qual.o
 
 KMC_LIBS = \
@@ -95,4 +96,4 @@ clean:
 	-rm $(KMC_TOOLS_DIR)/*.o
 	-rm -rf bin
 
-all: kmc kmc_dump kmc_tools
+all: kmc kmc_dump #kmc_tools
